@@ -1,9 +1,6 @@
-FROM python:3.8-slim-buster 
-WORKDIR /app 
+from flask import Flask
+app = Flask(__name__)
 
-COPY requirements.txt requirements.txt 
-
-RUN pip3 install -r requirements.txt 
-COPY . . 
-
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"] 
+@app.route('/')
+def hello_world():
+    return 'Hello, Docker!'
